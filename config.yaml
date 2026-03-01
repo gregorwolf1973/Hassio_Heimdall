@@ -1,0 +1,18 @@
+name: "Heimdall"
+description: "Heimdall Application Dashboard for Home Assistant"
+version: "2.7.6"
+slug: "heimdall"
+init: false
+arch:
+  - aarch64
+  - amd64
+ports:
+  8888/tcp: 8888
+ports_description:
+  8888/tcp: "Heimdall Web Interface"
+map:
+  - share:rw
+host_network: false
+options: {}
+schema: {}
+webui: http://[HOST]:[PORT:8888]
