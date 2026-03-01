@@ -14,20 +14,23 @@ mkdir -p /share/heimdall/public/icons
 # .env Datei erstellen falls nicht vorhanden
 if [ ! -f /share/heimdall/.env ]; then
     cp /var/www/heimdall.dist/.env.example /share/heimdall/.env
+    # APP_URL leer lassen - Heimdall nutzt dann relative URLs
+    sed -i "s|APP_URL=.*|APP_URL=|" /share/heimdall/.env
 fi
-
-# APP_URL korrekt setzen
-sed -i "s|APP_URL=.*|APP_URL=http://$(hostname -i | awk '{print $1}'):8888|g" /share/heimdall/.env
 
 # Symlinks zu persistenten Daten
 rm -rf /var/www/heimdall/storage
 rm -rf /var/www/heimdall/public/uploads
 rm -rf /var/www/heimdall/public/icons
+rm -rf /var/www/heimdall/public/storage
 
 ln -sf /share/heimdall/storage /var/www/heimdall/storage
 ln -sf /share/heimdall/public/uploads /var/www/heimdall/public/uploads
 ln -sf /share/heimdall/public/icons /var/www/heimdall/public/icons
 ln -sf /share/heimdall/.env /var/www/heimdall/.env
+
+# Storage Link erstellen
+ln -sf /var/www/heimdall/storage/app/public /var/www/heimdall/public/storage
 
 # Datenbank SQLite anlegen falls nicht vorhanden
 if [ ! -f /share/heimdall/database/app.sqlite ]; then
@@ -44,13 +47,9 @@ fi
 # Datenbank migrieren
 php83 artisan migrate --force
 
-# Storage Link erstellen (wichtig für Bilder/Logos!)
-rm -rf /var/www/heimdall/public/storage
-php83 artisan storage:link
-
 # Cache leeren
-php83 artisan cache:clear
 php83 artisan config:clear
+php83 artisan cache:clear
 php83 artisan view:clear
 
 # Berechtigungen setzen
