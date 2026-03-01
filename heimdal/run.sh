@@ -41,12 +41,16 @@ fi
 # Datenbank migrieren
 php83 artisan migrate --force
 
+# Storage Link erstellen (wichtig für Bilder/Logos!)
+rm -rf /var/www/heimdall/public/storage
+php83 artisan storage:link
+
 # Cache leeren
 php83 artisan cache:clear
 php83 artisan config:clear
 php83 artisan view:clear
 
-# Berechtigungen setzen - ALLES beschreibbar machen
+# Berechtigungen setzen
 chmod -R 777 /share/heimdall/storage
 chmod -R 777 /share/heimdall/public/uploads
 chmod -R 777 /share/heimdall/public/icons
