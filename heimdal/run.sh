@@ -15,14 +15,14 @@ if [ ! -f /share/heimdall/.env ]; then
     cp /var/www/heimdall.dist/.env.example /share/heimdall/.env
     # APP_KEY generieren
     cd /var/www/heimdall
-    php artisan key:generate --force
+    php83 artisan key:generate --force
 fi
 
 # Datenbank migrieren falls noch nicht geschehen
 if [ ! -f /share/heimdall/database/app.sqlite ]; then
     touch /share/heimdall/database/app.sqlite
     cd /var/www/heimdall
-    php artisan migrate --force
+    php83 artisan migrate --force
 fi
 
 # Berechtigungen setzen

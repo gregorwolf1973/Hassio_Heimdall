@@ -36,6 +36,9 @@ RUN wget -q https://github.com/linuxserver/Heimdall/archive/refs/tags/v2.7.6.tar
     && cp -r /var/www/heimdall /var/www/heimdall.dist \
     && chown -R nobody:nobody /var/www/heimdall
 
+# php Symlink erstellen damit Artisan funktioniert
+RUN ln -sf /usr/bin/php83 /usr/bin/php
+
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
