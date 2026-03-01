@@ -14,9 +14,10 @@ mkdir -p /share/heimdall/public/icons
 # .env Datei erstellen falls nicht vorhanden
 if [ ! -f /share/heimdall/.env ]; then
     cp /var/www/heimdall.dist/.env.example /share/heimdall/.env
-    # APP_URL leer lassen - Heimdall nutzt dann relative URLs
-    sed -i "s|APP_URL=.*|APP_URL=|" /share/heimdall/.env
 fi
+
+# APP_URL immer leeren damit relative URLs verwendet werden
+sed -i "s|APP_URL=.*|APP_URL=|" /share/heimdall/.env
 
 # Symlinks zu persistenten Daten
 rm -rf /var/www/heimdall/storage
@@ -28,8 +29,6 @@ ln -sf /share/heimdall/storage /var/www/heimdall/storage
 ln -sf /share/heimdall/public/uploads /var/www/heimdall/public/uploads
 ln -sf /share/heimdall/public/icons /var/www/heimdall/public/icons
 ln -sf /share/heimdall/.env /var/www/heimdall/.env
-
-# Storage Link erstellen
 ln -sf /var/www/heimdall/storage/app/public /var/www/heimdall/public/storage
 
 # Datenbank SQLite anlegen falls nicht vorhanden
