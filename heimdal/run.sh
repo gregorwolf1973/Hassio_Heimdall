@@ -16,6 +16,9 @@ if [ ! -f /share/heimdall/.env ]; then
     cp /var/www/heimdall.dist/.env.example /share/heimdall/.env
 fi
 
+# APP_URL korrekt setzen
+sed -i "s|APP_URL=.*|APP_URL=http://$(hostname -i | awk '{print $1}'):8888|g" /share/heimdall/.env
+
 # Symlinks zu persistenten Daten
 rm -rf /var/www/heimdall/storage
 rm -rf /var/www/heimdall/public/uploads
