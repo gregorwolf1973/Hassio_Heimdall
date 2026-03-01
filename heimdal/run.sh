@@ -3,12 +3,13 @@ set -e
 
 # Persistente Daten in /share/heimdall
 mkdir -p /share/heimdall/database
-mkdir -p /share/heimdall/storage/app
-mkdir -p /share/heimdall/storage/framework/cache
+mkdir -p /share/heimdall/storage/app/public
+mkdir -p /share/heimdall/storage/framework/cache/data
 mkdir -p /share/heimdall/storage/framework/sessions
 mkdir -p /share/heimdall/storage/framework/views
 mkdir -p /share/heimdall/storage/logs
 mkdir -p /share/heimdall/public/uploads
+mkdir -p /share/heimdall/public/icons
 
 # .env Datei erstellen falls nicht vorhanden
 if [ ! -f /share/heimdall/.env ]; then
@@ -18,9 +19,11 @@ fi
 # Symlinks zu persistenten Daten
 rm -rf /var/www/heimdall/storage
 rm -rf /var/www/heimdall/public/uploads
+rm -rf /var/www/heimdall/public/icons
 
 ln -sf /share/heimdall/storage /var/www/heimdall/storage
 ln -sf /share/heimdall/public/uploads /var/www/heimdall/public/uploads
+ln -sf /share/heimdall/public/icons /var/www/heimdall/public/icons
 ln -sf /share/heimdall/.env /var/www/heimdall/.env
 
 # Datenbank SQLite anlegen falls nicht vorhanden
@@ -38,9 +41,18 @@ fi
 # Datenbank migrieren
 php83 artisan migrate --force
 
-# Berechtigungen setzen
+# Cache leeren
+php83 artisan cache:clear
+php83 artisan config:clear
+php83 artisan view:clear
+
+# Berechtigungen setzen - ALLES beschreibbar machen
+chmod -R 777 /share/heimdall/storage
+chmod -R 777 /share/heimdall/public/uploads
+chmod -R 777 /share/heimdall/public/icons
+chmod -R 777 /share/heimdall/database
 chown -R nobody:nobody /share/heimdall
-chown -R nobody:nobody /var/www/heimdall/storage
+chown -R nobody:nobody /var/www/heimdall
 
 # PHP-FPM starten
 php-fpm83 -D
