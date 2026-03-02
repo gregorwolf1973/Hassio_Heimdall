@@ -28,6 +28,12 @@ RUN apk add --no-cache \
     unzip \
     git
 
+# PHP Upload-Limits erhöhen
+RUN echo "upload_max_filesize = 50M" >> /etc/php83/php.ini && \
+    echo "post_max_size = 50M" >> /etc/php83/php.ini && \
+    echo "memory_limit = 256M" >> /etc/php83/php.ini && \
+    echo "max_execution_time = 300" >> /etc/php83/php.ini
+
 # Heimdall herunterladen
 RUN wget -q https://github.com/linuxserver/Heimdall/archive/refs/tags/v2.7.6.tar.gz -O /tmp/heimdall.tar.gz \
     && mkdir -p /var/www/heimdall \
