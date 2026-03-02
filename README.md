@@ -20,6 +20,37 @@ Oder manuell:
 3. Add-on starten
 4. Heimdall über `http://homeassistant.local:8888` aufrufen
 
+## Animierte Hintergrundbilder (GIF)
+Heimdall unterstützt animierte GIF-Hintergründe über die Custom CSS Funktion.
+
+Schritt 1: GIF in Home Assistant ablegen
+Kopiere dein GIF in den HA-Medienordner per SSH oder Datei-Editor Add-on:
+/www/hintergrundbild.gif
+Das GIF ist dann erreichbar unter:
+http://DEINE-HA-IP:8123/local/hintergrundbild.gif
+
+Schritt 2: Transparentes Platzhalterbild hochladen
+Heimdall erfordert ein Hintergrundbild – lade ein transparentes 1x1 Pixel PNG als Hintergrundbild hoch damit das CSS-GIF nicht überschrieben wird:
+
+In Heimdall → Einstellungen → Hintergrund ein transparentes PNG hochladen
+
+Schritt 3: Custom CSS einfügen
+In Heimdall → Einstellungen → Erweitert → Custom CSS folgendes einfügen:
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('http://DEINE-HA-IP:8123/local/hintergrundbild.gif') center/cover no-repeat;
+    z-index: -1;
+}
+
+DEINE-HA-IP durch die IP deines Home Assistant ersetzen, z.B. 192.168.178.37
+
+Unterstützte Formate
+Empfehlung   GIF✅Für animierte Hintergründe, kleine Dateigröße
+
 ## Features
 
 - Elegantes Application Dashboard
