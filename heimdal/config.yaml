@@ -1,6 +1,6 @@
 name: "Heimdall"
 description: "Heimdall Application Dashboard for Home Assistant"
-version: "2.7.12"
+version: "2.7.13"
 slug: "heimdall"
 init: false
 arch:
