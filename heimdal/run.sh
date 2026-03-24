@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+# Port aus Konfiguration lesen
+PORT=$(bashio::config 'port')
+export APP_PORT=${PORT:-8888}
+
 # Persistente Daten in /share/heimdall
 mkdir -p /share/heimdall/database
 mkdir -p /share/heimdall/storage/app/public
