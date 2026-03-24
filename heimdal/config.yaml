@@ -1,18 +1,24 @@
 name: "Heimdall"
 description: "Heimdall Application Dashboard for Home Assistant"
-version: "2.7.6"
+version: "2.7.7"
 slug: "heimdall"
 init: false
 arch:
   - aarch64
   - amd64
+ingress: true
+ingress_port: 8888
+panel_icon: mdi:view-dashboard
+panel_title: Heimdall
 ports:
-  8888/tcp: 8888
+  8888/tcp: null
 ports_description:
-  8888/tcp: "Heimdall Web Interface"
+  8888/tcp: "Heimdall Web Interface (optional)"
 map:
   - share:rw
 host_network: false
-options: {}
-schema: {}
+options:
+  port: 8888
+schema:
+  port: int
 webui: http://[HOST]:[PORT:8888]
