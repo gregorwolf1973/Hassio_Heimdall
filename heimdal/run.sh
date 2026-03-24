@@ -20,15 +20,14 @@ if [ ! -f /share/heimdall/.env ]; then
     cp /var/www/heimdall.dist/.env.example /share/heimdall/.env
 fi
 
-# APP_URL immer leeren damit relative URLs verwendet werden
-sed -i "s|APP_URL=.*|APP_URL=|" /share/heimdall/.env
+# APP_URL auf externe Domain setzen
+sed -i "s|APP_URL=.*|APP_URL=https://home.biker633.ddnss.de|" /share/heimdall/.env
 
 # Symlinks zu persistenten Daten
 rm -rf /var/www/heimdall/storage
 rm -rf /var/www/heimdall/public/uploads
 rm -rf /var/www/heimdall/public/icons
 rm -rf /var/www/heimdall/public/storage
-
 ln -sf /share/heimdall/storage /var/www/heimdall/storage
 ln -sf /share/heimdall/public/uploads /var/www/heimdall/public/uploads
 ln -sf /share/heimdall/public/icons /var/www/heimdall/public/icons
@@ -65,12 +64,6 @@ chown -R nobody:nobody /var/www/heimdall
 
 # Port in nginx Konfiguration setzen
 sed -i "s|listen 8888|listen ${APP_PORT}|g" /etc/nginx/nginx.conf
-
-# Ingress Token für APP_URL setzen
-INGRESS_URL=$(cat /data/options.json | grep -o '"ingress_url":"[^"]*"' | grep -o '"[^"]*"$' | tr -d '"' 2>/dev/null || echo "")
-if [ -n "$INGRESS_URL" ]; then
-    sed -i "s|APP_URL=.*|APP_URL=${INGRESS_URL}|" /share/heimdall/.env
-fi
 
 # PHP-FPM starten
 php-fpm83 -D
