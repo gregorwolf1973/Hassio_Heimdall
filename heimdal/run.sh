@@ -66,6 +66,12 @@ chown -R nobody:nobody /var/www/heimdall
 # Port in nginx Konfiguration setzen
 sed -i "s|listen 8888|listen ${APP_PORT}|g" /etc/nginx/nginx.conf
 
+# Ingress Token für APP_URL setzen
+INGRESS_URL=$(cat /data/options.json | grep -o '"ingress_url":"[^"]*"' | grep -o '"[^"]*"$' | tr -d '"' 2>/dev/null || echo "")
+if [ -n "$INGRESS_URL" ]; then
+    sed -i "s|APP_URL=.*|APP_URL=${INGRESS_URL}|" /share/heimdall/.env
+fi
+
 # PHP-FPM starten
 php-fpm83 -D
 
