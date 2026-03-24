@@ -11,7 +11,7 @@ ingress_port: 8888
 panel_icon: mdi:view-dashboard
 panel_title: Heimdall
 ports:
-  8888/tcp: null
+  8888/tcp: 8888
 ports_description:
   8888/tcp: "Heimdall Web Interface (optional)"
 map:
