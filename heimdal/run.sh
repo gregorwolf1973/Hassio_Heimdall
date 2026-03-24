@@ -63,6 +63,9 @@ chmod -R 777 /share/heimdall/database
 chown -R nobody:nobody /share/heimdall
 chown -R nobody:nobody /var/www/heimdall
 
+# Port in nginx Konfiguration setzen
+sed -i "s|listen 8888|listen ${APP_PORT}|g" /etc/nginx/nginx.conf
+
 # PHP-FPM starten
 php-fpm83 -D
 
