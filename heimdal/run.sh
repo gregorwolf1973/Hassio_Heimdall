@@ -2,8 +2,8 @@
 set -e
 
 # Port aus Konfiguration lesen
-PORT=$(cat /data/options.json | python3 -c "import sys,json; print(json.load(sys.stdin).get('port', 8888))")
-export APP_PORT=${PORT:-8888}
+PORT=$(grep -o '"port":[0-9]*' /data/options.json | grep -o '[0-9]*')
+APP_PORT=${PORT:-8888}
 
 # Persistente Daten in /share/heimdall
 mkdir -p /share/heimdall/database
