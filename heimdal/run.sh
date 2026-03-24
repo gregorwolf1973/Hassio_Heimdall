@@ -23,6 +23,11 @@ fi
 # APP_URL auf externe Domain setzen
 sed -i "s|APP_URL=.*|APP_URL=https://home.biker633.ddnss.de|" /share/heimdall/.env
 
+sed -i "s|APP_URL=.*|APP_URL=https://home.biker633.ddnss.de|" /share/heimdall/.env
+# HTTPS erzwingen
+grep -q "FORCE_HTTPS" /share/heimdall/.env || echo "FORCE_HTTPS=true" >> /share/heimdall/.env
+grep -q "TRUSTED_PROXIES" /share/heimdall/.env || echo "TRUSTED_PROXIES=*" >> /share/heimdall/.env
+
 # Symlinks zu persistenten Daten
 rm -rf /var/www/heimdall/storage
 rm -rf /var/www/heimdall/public/uploads
