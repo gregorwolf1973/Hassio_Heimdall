@@ -2,7 +2,7 @@
 set -e
 
 # Port aus Konfiguration lesen
-PORT=$(bashio::config 'port')
+PORT=$(cat /data/options.json | python3 -c "import sys,json; print(json.load(sys.stdin).get('port', 8888))")
 export APP_PORT=${PORT:-8888}
 
 # Persistente Daten in /share/heimdall
