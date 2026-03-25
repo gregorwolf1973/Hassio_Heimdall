@@ -39,8 +39,8 @@ aspect_ratio: 100%
 
 Richte in NPM einen Proxy Host ein:
 - **Domain:** z.B. `home.deine-domain.de`
-- **Forward Hostname:** `172.30.33.X` (interne Docker IP des Containers)
-- **Forward Port:** `8888`
+- **Forward Hostname:** `IP oder homeassistant.local`
+- **Forward Port:** `8888` (Port anpassen)
 - **SSL:** Let's Encrypt aktivieren
 
 Dann die Webpage Card mit `https://home.deine-domain.de` verwenden.
@@ -93,7 +93,7 @@ body::before {
 }
 ```
 
-> `DEINE-HA-IP` durch die IP deines Home Assistant ersetzen, z.B. `192.168.178.37`
+> `DEINE-HA-IP` durch die IP deines Home Assistant ersetzen, z.B. `192.168.178.2`
 
 ### Unterstützte Formate
 
