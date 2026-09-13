@@ -1,7 +1,8 @@
 name: "Heimdall"
 description: "Heimdall Application Dashboard for Home Assistant"
-version: "2.7.16"
+version: "2.7.17"
 slug: "heimdall"
+url: "https://github.com/gregorwolf1973/Hassio_Heimdall"
 init: false
 arch:
   - aarch64
@@ -13,8 +14,4 @@ ports_description:
 map:
   - share:rw
 host_network: false
-options:
-  port: 8888
-schema:
-  port: int
 webui: http://[HOST]:[PORT:8888]

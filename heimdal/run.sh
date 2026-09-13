@@ -1,10 +1,6 @@
 #!/bin/sh
 set -e
 
-# Port aus Konfiguration lesen
-PORT=$(grep -o '"port":[0-9]*' /data/options.json | grep -o '[0-9]*')
-APP_PORT=${PORT:-8888}
-
 # Persistente Daten in /share/heimdall
 mkdir -p /share/heimdall/database
 mkdir -p /share/heimdall/storage/app/public
@@ -66,8 +62,8 @@ chmod -R 777 /share/heimdall/database
 chown -R nobody:nobody /share/heimdall
 chown -R nobody:nobody /var/www/heimdall
 
-# Port in nginx Konfiguration setzen
-sed -i "s|listen 8888|listen ${APP_PORT}|g" /etc/nginx/nginx.conf
+# Laufzeitverzeichnis für nginx (PID-Datei) sicherstellen
+mkdir -p /run/nginx
 
 # PHP-FPM starten
 php-fpm83 -D
