@@ -1,5 +1,7 @@
 # Heimdall Home Assistant Add-on
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/gregorwolf1973)
+
 Ich habe dieses Add-on erstellt, um Heimdall als Application Dashboard direkt in Home Assistant zu nutzen. Probiert es gerne aus, wenn es euch hilft freue ich mich 😊
 
 ## Über dieses Add-on
@@ -49,9 +51,7 @@ Dann die Webpage Card mit `https://home.deine-domain.de` verwenden.
 
 ## Konfiguration
 
-| Option | Standard | Beschreibung |
-|--------|---------|-------------|
-| `port` | `8888` | Port für das Heimdall Web Interface |
+Das Add-on hat keine eigenen Optionen. Das Web Interface läuft im Container auf Port `8888`; der Host-Port lässt sich in der Add-on-Konfiguration unter **Netzwerk** ändern.
 
 ---
 
@@ -111,7 +111,6 @@ body::before {
 - Persistente Datenspeicherung in `/share/heimdall`
 - Unterstützt `amd64` und `aarch64`
 - Direkter Zugriff über Port 8888
-- Ingress Unterstützung (In Seitenleiste anzeigen)
 
 ---
 
