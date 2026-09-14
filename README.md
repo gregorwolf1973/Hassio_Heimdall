@@ -13,7 +13,7 @@ Dieses Add-on installiert **Heimdall** v2.7.6 als Home Assistant Add-on. Heimdal
 ## Installation
 
 1. Füge dieses Repository in Home Assistant hinzu:
-   - Einstellungen → Add-ons → Add-on Store → ⋮ → Repository hinzufügen
+   - Einstellungen → Apps → App installieren → ⋮ → Repositories
    - URL eingeben: `https://github.com/gregorwolf1973/Hassio_Heimdall`
 2. Das Add-on **Heimdall** suchen und installieren
 3. Add-on starten
@@ -61,7 +61,7 @@ Heimdall unterstützt animierte GIF-Hintergründe über die Custom CSS Funktion.
 
 ### Schritt 1: GIF in Home Assistant ablegen
 
-Kopiere dein GIF in den HA-Medienordner per SSH oder Datei-Editor Add-on:
+Kopiere dein GIF in den `www`-Ordner deiner Home-Assistant-Konfiguration (per SSH oder Datei-Editor Add-on). Lege den Ordner an, falls er noch nicht existiert:
 
 ```
 /config/www/hintergrundbild.gif
