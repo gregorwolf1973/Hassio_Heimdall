@@ -6,7 +6,6 @@ RUN apk add --no-cache \
     php83 \
     php83-fpm \
     php83-session \
-    php83-json \
     php83-gd \
     php83-xml \
     php83-mbstring \

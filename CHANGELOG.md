@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.7.18
+
+- Fix: Das Paket `php83-json` wird nicht mehr installiert. Es existiert im
+  Basis-Image (Alpine 3.24) nicht mehr, weil die JSON-Funktionen seit PHP 8.0
+  fest in PHP eingebaut sind und das separate Paket entfernt wurde. Der
+  Image-Build schlug dadurch fehl.
+
 ## 2.7.17
 
 - Fix: Die Option "port" ist entfernt. Sie hat nginx im Container auf einen
