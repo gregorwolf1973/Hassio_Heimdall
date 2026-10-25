@@ -1,6 +1,6 @@
 # Heimdall
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/gregorwolf1973)
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/gregorwolf1973) [![Donate using Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/Gregor_Wolf/donate)
 
 Heimdall ist ein elegantes Application Dashboard, mit dem sich alle Web-Anwendungen und Dienste im Heimnetz an einer Stelle sammeln und schnell aufrufen lassen. Dieses Add-on installiert Heimdall v2.7.6 mit nginx und PHP 8.3 FPM.
 
