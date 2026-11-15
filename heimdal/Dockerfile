@@ -3,38 +3,39 @@ FROM ${BUILD_FROM}
 
 RUN apk add --no-cache \
     nginx \
-    php83 \
-    php83-fpm \
-    php83-session \
-    php83-gd \
-    php83-xml \
-    php83-mbstring \
-    php83-openssl \
-    php83-ctype \
-    php83-zip \
-    php83-fileinfo \
-    php83-pdo \
-    php83-pdo_sqlite \
-    php83-sqlite3 \
-    php83-tokenizer \
-    php83-dom \
-    php83-xmlwriter \
-    php83-simplexml \
-    php83-curl \
-    php83-intl \
-    php83-bcmath \
+    php84 \
+    php84-fpm \
+    php84-session \
+    php84-gd \
+    php84-xml \
+    php84-mbstring \
+    php84-openssl \
+    php84-ctype \
+    php84-zip \
+    php84-fileinfo \
+    php84-pdo \
+    php84-pdo_sqlite \
+    php84-sqlite3 \
+    php84-tokenizer \
+    php84-dom \
+    php84-xmlwriter \
+    php84-simplexml \
+    php84-curl \
+    php84-intl \
+    php84-bcmath \
+    php84-iconv \
     wget \
     unzip \
     git
 
 # PHP Upload-Limits erhöhen
-RUN echo "upload_max_filesize = 50M" >> /etc/php83/php.ini && \
-    echo "post_max_size = 50M" >> /etc/php83/php.ini && \
-    echo "memory_limit = 256M" >> /etc/php83/php.ini && \
-    echo "max_execution_time = 300" >> /etc/php83/php.ini
+RUN echo "upload_max_filesize = 50M" >> /etc/php84/php.ini && \
+    echo "post_max_size = 50M" >> /etc/php84/php.ini && \
+    echo "memory_limit = 256M" >> /etc/php84/php.ini && \
+    echo "max_execution_time = 300" >> /etc/php84/php.ini
 
 # Heimdall herunterladen
-RUN wget -q https://github.com/linuxserver/Heimdall/archive/refs/tags/v2.7.6.tar.gz -O /tmp/heimdall.tar.gz \
+RUN wget -q https://github.com/linuxserver/Heimdall/archive/refs/tags/v2.8.4.tar.gz -O /tmp/heimdall.tar.gz \
     && mkdir -p /var/www/heimdall \
     && tar -xzf /tmp/heimdall.tar.gz -C /var/www/heimdall --strip-components=1 \
     && rm /tmp/heimdall.tar.gz \
@@ -42,7 +43,7 @@ RUN wget -q https://github.com/linuxserver/Heimdall/archive/refs/tags/v2.7.6.tar
     && chown -R nobody:nobody /var/www/heimdall
 
 # php Symlink erstellen damit Artisan funktioniert
-RUN ln -sf /usr/bin/php83 /usr/bin/php
+RUN ln -sf /usr/bin/php84 /usr/bin/php
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY run.sh /run.sh

@@ -6,7 +6,7 @@ Ich habe dieses Add-on erstellt, um Heimdall als Application Dashboard direkt in
 
 ## Über dieses Add-on
 
-Dieses Add-on installiert **Heimdall** v2.7.6 als Home Assistant Add-on. Heimdall ist ein elegantes Application Dashboard zum Verwalten und schnellen Aufrufen aller eurer Web-Anwendungen und Services.
+Dieses Add-on installiert **Heimdall** v2.8.4 als Home Assistant Add-on. Heimdall ist ein elegantes Application Dashboard zum Verwalten und schnellen Aufrufen aller eurer Web-Anwendungen und Services.
 
 ---
 

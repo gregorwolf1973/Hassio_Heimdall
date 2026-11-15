@@ -43,16 +43,16 @@ ln -sf /share/heimdall/database/app.sqlite /var/www/heimdall/database/app.sqlite
 # APP_KEY generieren falls nicht gesetzt
 cd /var/www/heimdall
 if ! grep -q "^APP_KEY=.\+" /share/heimdall/.env; then
-    php83 artisan key:generate --force
+    php84 artisan key:generate --force
 fi
 
 # Datenbank migrieren
-php83 artisan migrate --force
+php84 artisan migrate --force
 
 # Cache leeren
-php83 artisan config:clear
-php83 artisan cache:clear
-php83 artisan view:clear
+php84 artisan config:clear
+php84 artisan cache:clear
+php84 artisan view:clear
 
 # Berechtigungen setzen
 chmod -R 777 /share/heimdall/storage
@@ -66,7 +66,7 @@ chown -R nobody:nobody /var/www/heimdall
 mkdir -p /run/nginx
 
 # PHP-FPM starten
-php-fpm83 -D
+php-fpm84 -D
 
 # Nginx starten
 exec nginx -g 'daemon off;'

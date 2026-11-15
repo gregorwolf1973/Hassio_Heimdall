@@ -1,6 +1,6 @@
 name: "Heimdall"
 description: "Heimdall Application Dashboard for Home Assistant"
-version: "2.7.18"
+version: "2.8.0"
 slug: "heimdall"
 url: "https://github.com/gregorwolf1973/Hassio_Heimdall"
 init: false
