@@ -1,6 +1,7 @@
 name: "Heimdall"
 description: "Heimdall Application Dashboard for Home Assistant"
-version: "2.8.0"
+version: "2.8.1"
+image: ghcr.io/gregorwolf1973/{arch}-addon-heimdall
 slug: "heimdall"
 url: "https://github.com/gregorwolf1973/Hassio_Heimdall"
 init: false
